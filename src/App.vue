@@ -1,35 +1,38 @@
 <template>
   <dir>
-    <header>
-      <div class="row">
-        <div class="col col-sm-12">
-          <h1>Site</h1>
-          <app-cart></app-cart>  
-        </div>
-      </div>
-    </header>
-    <section>
-      <div class="container">
-        <div class="row">
-          <div class="col col-sm-12">
-            <app-product></app-product>
-          </div>
-        </div>
-      </div>
-    </section>
+    <app-header :cnt="cnt"></app-header>
+    <app-content
+      @minus="onMinus"
+      @plus="onPlus"
+    ></app-content>
   </dir>
 </template>
 
 <script>
-  import AppProduct from './components/Product';
-  import AppCard from './components/Card';
+  import AppHeader from './components/Header.vue';
+  import AppContent from './components/Content.vue'; 
 
-export default {
-  components: {
-    AppProduct,
-    AppCard
+  export default {
+    data() {
+        return {
+            cnt: 1, 
+        }
+    },
+    methods: {
+      onMinus() {
+        if(this.cnt > 1) {
+          this.cnt--;
+        }
+      },
+      onPlus() {
+        this.cnt++;
+      }
+    },
+    components: {
+      AppHeader,
+      AppContent,
+    }
   }
-}
 </script>
 
 <style>

@@ -1,11 +1,12 @@
 <template>
     <div>
-        1
+        {{ cnt }}
     </div>    
 </template>
 
 <script>
     export default {
+        props: ['cnt'],
         
     }
 </script>
